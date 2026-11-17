@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import DashboardSidebar from "@/components/layout/DashboardSidebar";
+import DashboardHeader from "@/components/layout/DashboardHeader";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -6,20 +8,14 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header slot */}
-      <header className="border-b px-6 py-4">
-        {/* Header content will be placed here */}
-      </header>
+    <div dir="ltr" className="min-h-screen flex bg-[#F6F7FB] text-slate-800 antialiased">
+      {/* Sidebar on the left */}
+      <DashboardSidebar />
 
-      <div className="flex flex-1">
-        {/* Sidebar slot */}
-        <aside className="w-64 border-r p-4 hidden md:block">
-          {/* Sidebar content will be placed here */}
-        </aside>
-
-        {/* Main content */}
-        <main className="flex-1 p-6">
+      {/* Main column on the right: Header on top, Main below */}
+      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+        <DashboardHeader />
+        <main className="flex-1 bg-[#F6F7FB] p-6 lg:p-8">
           {children}
         </main>
       </div>
