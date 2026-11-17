@@ -1,7 +1,13 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Info, ExternalLink } from "lucide-react";
+import { getSectionTitle } from "@/lib/navigation";
 
 export default function DashboardHeader() {
+  const pathname = usePathname();
   const websiteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL || "/";
+  const sectionTitle = getSectionTitle(pathname);
 
   return (
     <header className="w-full shrink-0 flex flex-col z-20">
@@ -19,7 +25,7 @@ export default function DashboardHeader() {
         <div className="flex items-center text-sm">
           <span className="text-slate-500 font-normal">WAPTCO CMS</span>
           <span className="text-slate-400 mx-2 font-normal">/</span>
-          <span className="text-slate-900 font-semibold">Dashboard</span>
+          <span className="text-slate-900 font-semibold">{sectionTitle}</span>
         </div>
 
         {/* Right Actions */}
